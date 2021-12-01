@@ -2,13 +2,13 @@
 title: COVID-19 Pandemic Prediction - Part I
 ---
 
-## Creating a COVID Caution Index from Google Trends Data
+## Creating a COVID-19 Caution Index from Google Trends Data
 
 Google Trends provides easily accessible data on the relative changes in the popularity of various search terms. I tried to construct an index of inferred behavioral caution related to COVID-19 from this data.
 
 ### Search Terms
 
-I tested search terms that might be related or inversely related such as “outdoor dining”, “best masks”, and “flight”. Ideal search terms would have sufficient overall search volume, show high levels of modulation to COVID, be rapidly responsive to changing conditions, and be available for as many states as possible. All these search terms were strongly affected by the COVID crisis, reflecting a massive disruption to society (data for California shown):   
+I tested search terms that might be related or inversely related such as “outdoor dining”, “best masks”, and “flight”. Ideal search terms would have sufficient overall search volume, show high levels of modulation to COVID-19, be rapidly responsive to changing conditions, and be available for as many states as possible. All these search terms were strongly affected by the COVID-19 crisis, reflecting a massive disruption to society (data for California shown):   
 
 <img src="CA_5_years.png" alt="Google Trends for all search terms 2018-2021">
 
