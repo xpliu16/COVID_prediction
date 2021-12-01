@@ -6,7 +6,7 @@ Google Trends provides easily accessible data on the relative changes in the pop
 
 I tested search terms that might be related or inversely related such as “outdoor dining”, “best masks”, and “flight”. Ideal search terms would have sufficient overall search volume, show high levels of modulation to COVID, be rapidly responsive to changing conditions, and be available for as many states as possible. All these search terms were strongly affected by the COVID crisis, reflecting a massive disruption to society (data for California shown):   
 
-![Google Trends for all search terms 2018-2021](/CA_5_years.png "")
+![Google Trends for all search terms 2018-2021](CA_5_years.png "")
 
 “Library hours” seemed to respond sluggishly during the pandemic, perhaps because people were less keen to resume library use than, say, restaurant dining. Sometimes paradoxical effects are also seen. For instance, interest in “Indoor dining” (not shown) peaked in the middle of the pandemic, presumably because of the difficulty of finding indoor dining. “Outdoor dining” seemed a better measure of caution but was sensitive to climate – it was not available for Alaska, and showed milder seasonality for California. Some states had overall low search volume, e.g., Wyoming. I decided to first try working with data from the 5 most populous states. 
 
@@ -17,11 +17,11 @@ NaN values were imputed with a simple moving average.
 
 The function tsclean() did a good job of removing impulse noise (e.g., a sharp peak in “bar” on New Years Eve 2017), but seemed too aggressive on the peaks that occurred during the pandemic. 
 
-![Effect of tsclean on impulse noise and peaks during the pandemic](/tsclean.png "")
+![Effect of tsclean on impulse noise and peaks during the pandemic](tsclean.png "")
 
 Instead, I chose to use a median filter with window size 3, which smoothed out impulse outliers while leaving more structure during the pandemic period. 
 
-![Effect of median filter on impulse noise and peaks during the pandemic](/Median_filter.png "")
+![Effect of median filter on impulse noise and peaks during the pandemic](Median_filter.png "")
 
 ### Seasonality
 
@@ -29,7 +29,7 @@ Many of these search terms exhibited clear seasonality, which was taken into acc
 
 Seasonality seemed to be removed well from the baseline period, and substantially impacted the shape of the post-COVID curve.
 
-![Removal of seasonality](/Seasonality.png "")
+![Removal of seasonality](Seasonality.png "")
 
 ### Validity and Index Construction
 
