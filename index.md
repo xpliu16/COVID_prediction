@@ -1,4 +1,6 @@
-# COVID-19 Pandemic Prediction - Part I
+---
+title: COVID-19 Pandemic Prediction - Part I
+---
 <br/>
 
 ## Creating a COVID Caution Index from Google Trends Data
