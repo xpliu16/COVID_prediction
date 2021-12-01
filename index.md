@@ -6,7 +6,7 @@ Google Trends provides easily accessible data on the relative changes in the pop
 
 I tested search terms that might be related or inversely related such as “outdoor dining”, “best masks”, and “flight”. Ideal search terms would have sufficient overall search volume, show high levels of modulation to COVID, be rapidly responsive to changing conditions, and be available for as many states as possible. All these search terms were strongly affected by the COVID crisis, reflecting a massive disruption to society (data for California shown):   
 
-![Google Trends for all search terms 2018-2021](/COVID_prediction/CA_5_years.png "")
+![Google Trends for all search terms 2018-2021](COVID_prediction/CA_5_years.png "")
 
 “Library hours” seemed to respond sluggishly during the pandemic, perhaps because people were less keen to resume library use than, say, restaurant dining. Sometimes paradoxical effects are also seen. For instance, interest in “Indoor dining” (not shown) peaked in the middle of the pandemic, presumably because of the difficulty of finding indoor dining. “Outdoor dining” seemed a better measure of caution but was sensitive to climate – it was not available for Alaska, and showed milder seasonality for California. Some states had overall low search volume, e.g., Wyoming. I decided to first try working with data from the 5 most populous states. 
 
