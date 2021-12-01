@@ -46,13 +46,12 @@ To compare the movements of the caution index to external measures of behavioral
 Restaurant and bar data is based on SafeGraph tracking of visits made by those with SafeGraph’s apps to bar-related or restaurant-related points of interest. Masking data is based on Facebook surveys and shows the estimated percentage of people who reported wearing masks for most or all of the time while in public in the past 7 days. 
 Restaurant and bar visits moved remarkably in antiphase with caution, while mask use moved in phase. However, mask use as measured by the survey appeared time-lagged and had larger fluctuations than the caution index.  
 
-![Caution vs bar visits](/Caution_vs_Bar_CA.png "")
+<img src="Caution_vs_Bar_CA.png" alt="Caution vs bar visits">
 
-![Caution vs restaurant visits](/Caution_vs_Restaurants_CA.png "")
+<img src="Caution_vs_Restaurants_CA.png" alt="Caution vs restaurant visits">
 
-![Caution vs bar visits](/Caution_vs_Masking_CA.png "")
+<img src="Caution_vs_Masking_CA.png" alt="Caution vs masking visits">
 
 The meaning of caution may have evolved during the pandemic. For instance, many people may have dispensed with outdoor masking but returned to indoor masking following the nadir of caution in July 2021. They may consider visiting a library with masks on or indoor dining with proper ventilation and distance between tables to be low risk.
 Also, as we get the hang of post-COVID living, the application of caution may require less information seeking. Perhaps people already have their favorite masks and locations for safe dining and search volumes may decline due to the reduced need for information.
-
 
