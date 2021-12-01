@@ -39,7 +39,7 @@ Seasonality seemed to be removed well from the baseline period, and substantiall
 
 Next, we checked whether these indices seemed to reflect some common underlying variable. As people’s understanding of caution (such as mask wearing, social distancing, and outdoor activities) changed rapidly during the first months of the pandemic, data was considered from 2020-05-20 onward. The clustered correlation matrix shows that the terms are strongly correlated or anticorrelated with each other.  
 
-<img src="Correlations_between_terms.png" alt="Correlation heatmap between all search terms">
+<img src="Correlations_between_terms2.png" alt="Correlation heatmap between all search terms">
 
 (Reordered correlation matrix heatmap code excerpted from [STHDA](http://www.sthda.com/english/wiki/ggplot2-quick-correlation-matrix-heatmap-r-software-and-data-visualization).)
 
