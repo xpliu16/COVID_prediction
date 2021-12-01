@@ -1,3 +1,5 @@
+# COVID-19 Pandemic Prediction - Part I
+
 ## Creating a COVID Caution Index from Google Trends Data
 
 Google Trends provides easily accessible data on the relative changes in the popularity of various search terms. I tried to construct an index of inferred behavioral caution related to COVID-19 from this data.
