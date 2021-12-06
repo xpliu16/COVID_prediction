@@ -18,8 +18,7 @@ for (words in search_terms) {
     print(paste(s,words))
     gtrends(keyword = c(words), 
             geo = c(s),
-            time = "2016-11-18 2021-11-18") -> result1
-    
+            time = "2016-12-6 2021-12-6") -> result1
     result <- result1$interest_over_time
     nrows = length(result$hits)
     temp1[ind:(ind+nrows-1)] <- paste0(as.Date(result$date))
