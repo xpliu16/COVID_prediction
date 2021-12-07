@@ -109,7 +109,6 @@ ggplot(data = melted_cormat, aes(x=Var1, y=Var2, fill=value)) +
                                    size = 12, hjust = 1))+
   coord_fixed()
 
-
 s <- "US-CA"
 words <- "bar"
 df_sub = subset(df_gt, state==s & search_term==words)
@@ -188,14 +187,14 @@ plot(df_sub$date,deseas,type ="l",
      xlab="",
      ylab="")
 plot(df_sub$date,df_sub$hits,type ="l",
-     xlim=c(as.Date("2020-03-20"),as.Date("2021-11-18")),
+     xlim=c(as.Date("2020-03-20"),as.Date("2021-11-28")),
      main="Post-COVID original\n\"outdoor dining\"",
      font.main=1,
      ylim=c(0,120),
      xlab="",
      ylab="")
 plot(df_sub$date,deseas,type ="l",
-     xlim=c(as.Date("2020-03-20"),as.Date("2021-11-18")),
+     xlim=c(as.Date("2020-03-20"),as.Date("2021-11-28")),
      main="Post-COVID seasonality removed\n\"outdoor dining\"",
      font.main=1,
      ylim=c(0,120),
@@ -221,13 +220,13 @@ plot(df_sub$date,caution,type="l")
 df_sub$caution_norm<-normalize(caution)
 
 #plot(df_sub$date,df_sub$caution_norm,type="l",
-#     xlim=as.Date(c("2020-05-01", "2021-11-18")),ylim=c(0,1),
+#     xlim=as.Date(c("2020-05-01", "2021-11-28")),ylim=c(0,1),
 #     lwd = 3, lty = 1, xlab="Date", ylab="Normalized value")
 #axis.Date(1, at=seq(min(df_sub$date), max(df_sub$date), by="months"), format="%m-%Y")
 
 data <- covidcast_signal("safegraph-weekly", "bars_visit_num",
                          start_day = "2020-05-01",
-                         end_day = "2021-11-18",
+                         end_day = "2021-11-28",
                         "state")
 # Warning: Data not fetched for the following days: 2020-12-14, 
 # 2020-12-15, 2020-12-16, 2020-12-17, 2020-12-18, 2020-12-19, 2020-12-20 
@@ -257,14 +256,14 @@ ggplot() +
   labs(color = "") +
   ggtitle(paste("Inferred caution vs. observed behavior\n (",s,")")) +
   theme(plot.title = element_text(hjust = 0.5)) +
-  scale_x_date(limits = as.Date(c("2020-05-01","2021-11-18")),
+  scale_x_date(limits = as.Date(c("2020-05-01","2021-11-28")),
                date_breaks = "3 months" , date_labels = "%b-%y") +
   theme(legend.position = c(1.1, 1),legend.justification = c(0, 1)) +
   theme(plot.margin = unit(c(0.5,4.5,0.5,0.5), "cm"))
 
 data2 <- covidcast_signal("safegraph-weekly", "restaurants_visit_num",
                          start_day = "2020-05-01",
-                         end_day = "2021-11-18",
+                         end_day = "2021-11-28",
                          "state")
 data2_sub <- subset(data2, geo_value==tolower(substr(test_state,4,5)))
 data2_sub$value <- na_ma(data2_sub$value, weighting = "simple")
@@ -283,7 +282,7 @@ ggplot() +
   labs(color = "") +
   ggtitle(paste("Inferred caution vs. observed behavior\n (",s,")")) +
   theme(plot.title = element_text(hjust = 0.5)) +
-  scale_x_date(limits = as.Date(c("2020-05-01","2021-11-18")),
+  scale_x_date(limits = as.Date(c("2020-05-01","2021-11-28")),
                date_breaks = "3 months" , date_labels = "%b-%y") +
   theme(legend.position = c(1.1, 1),legend.justification = c(0, 1)) +
   theme(plot.margin = unit(c(0.5,4.5,0.5,0.5), "cm"))
@@ -292,7 +291,7 @@ ggplot() +
 # Mask data only available after 2021-02-09?
 data3 <- covidcast_signal("fb-survey", "smoothed_wearing_mask_7d",
                           start_day = "2020-05-01",
-                          end_day = "2021-11-18",
+                          end_day = "2021-11-28",
                           "state")
 data3_sub <- subset(data3, geo_value==tolower(substr(test_state,4,5)))
 data3_sub$value = na_ma(data3_sub$value, weighting = "simple")
@@ -311,12 +310,12 @@ ggplot() +
   labs(color = "") +
   ggtitle(paste("Inferred caution vs. observed behavior\n (",s,")")) +
   theme(plot.title = element_text(hjust = 0.5)) +
-  scale_x_date(limits = as.Date(c("2020-05-01","2021-11-18")),
+  scale_x_date(limits = as.Date(c("2020-05-01","2021-11-28")),
                date_breaks = "3 months" , date_labels = "%b-%y") +
   theme(legend.position = c(1.1, 1),legend.justification = c(0, 1)) +
   theme(plot.margin = unit(c(0.5,4.5,0.5,0.5), "cm"))
 
-df <- data.frame(df_sub$date, df_sub$caution)
+df <- data.frame(df_sub$date, df_sub$caution_norm)
 colnames(df) <- c("date","caution")
 write.csv(df,"C:\\Users\\Ping\\Desktop\\Project\\COVID_prediction\\data\\gtrend_caution.csv", row.names = FALSE)
 
@@ -341,9 +340,13 @@ df_cv_weekly$new_case<-normalize(df_cv_weekly$new_case)
 df_sub<-subset(df_sub,date>'2020-05-20')
 df_cv_weekly$caution <- df_sub$caution_norm
 
+df_cv_weekly$log_caution = log(df_cv_weekly$caution+0.01)
+df_cv_weekly$log_new_case = log(df_during$new_case+0.01)
+
 x_train = cbind(df_cv_weekly$new_case[1:round(0.85*length(df_cv_weekly$new_case))], 
                 df_sub$caution_norm[1:round(0.85*length(df_cv_weekly$new_case))])
-colnames(x_train) <- c("new_case", "caution") 
+colnames(x_train) <- c("log_new_case", "log_caution") 
 fitvar1= VAR(x_train, p=5, type="both")
 summary(fitvar1)
+
 
