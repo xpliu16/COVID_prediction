@@ -346,7 +346,7 @@ df_cv_weekly$log_new_case = log(df_during$new_case+0.01)
 x_train = cbind(df_cv_weekly$new_case[1:round(0.85*length(df_cv_weekly$new_case))], 
                 df_sub$caution_norm[1:round(0.85*length(df_cv_weekly$new_case))])
 colnames(x_train) <- c("log_new_case", "log_caution") 
-fitvar1= VAR(x_train, p=5, type="both")
+fitvar1= VAR(x_train, p=12, type="both")
 summary(fitvar1)
 
 
