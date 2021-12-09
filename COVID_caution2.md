@@ -49,20 +49,19 @@ And for CA:
 The model fit for NY has interesting potential interpretations. Aside from the variables having positive coefficients with themselves at a lag of 1, new cases were related with a significant negative coefficient to caution at a lag of 3 weeks, possibly reflecting a protective effect of caution on new cases. Caution was also negatively related to itself at lag 3, which may reflect a caution fatigue phenomenon.
 
 <img src="VECM_NY.png" alt="VECM fit parameter summary (CA)">
-
 However, we should take these interpretations with a grain of salt. This pattern was also seen in the fit for NY over the entire data period, but the negative lag 3 coefficient of caution in predicting new case was not present when fitting the data for CA, but was possibly compensated for by the larger positive lag 1 coefficient of caution since the lag 3 coefficient of caution on itself was still negative. In general, these fits were not robust and depended on the state, time range, segment being predicted, etc. Some possible reasons would be:
 
-1)	Everything moving together with superimposed noise - likely high collinearity between lagged terms and the exogenous variable in the ARIMAX. It may be hard to get a unique solution and consistent coefficients in this case, even if predictions are decent. It may be hard to say what is causing what. 
+1.	Everything moving together with superimposed noise - likely high collinearity between lagged terms and the exogenous variable in the ARIMAX. It may be hard to get a unique solution and consistent coefficients in this case, even if predictions are decent. It may be hard to say what is causing what. 
 
-2)	Insufficient cycles of meaningful fluctuation – even though the pandemic feels like it has been going on forever, only a few COVID-19 waves and seasonal cycles of data are available. For instance, when I tried integrating average temperature data and fitting the first 80% of the data, it appeared to be dominated by the winter surge of 2020, disrupting predictions for 2021. Also, the number of data points is not many times greater than the number of fit parameters.
+2.	Insufficient cycles of meaningful fluctuation – even though the pandemic feels like it has been going on forever, only a few COVID-19 waves and seasonal cycles of data are available. For instance, when I tried integrating average temperature data and fitting the first 80% of the data, it appeared to be dominated by the winter surge of 2020, disrupting predictions for 2021. Also, the number of data points is not many times greater than the number of fit parameters.
 
 For the VECM, six week forecasts on new cases with training sets of 80%, 85%, and 90%, had an average MAPE of 10.4%, as compared with 16.0% for naïve method. For forecasting caution, the VECM had an average MAPE of 10.0%, the ARMAX model 7.6%, and the naïve 10.1%. Apparently, it is pretty common for complex methods to perform similarly to simple methods, particularly with limited data and on out-of-sample prediction, e.g., [this discussion](https://stats.stackexchange.com/questions/124955/is-it-unusual-for-the-mean-to-outperform-arima).
 
 Generally, reasons for errors in forecasting include:
 
-1)	Trying to forecast too many periods into future – the 20% testing set is 17 steps (weeks), which would move away from the actual values.
+1.	Trying to forecast too many periods into future – the 20% testing set is 17 steps (weeks), which would move away from the actual values.
 
-2)	Seasonality already taken out of caution index and COVID-19 seasonality unclear - I suspect fits generally look better with obvious seasonality since those are large fluctuations that are relatively easy to account for. 
+2.	Seasonality already taken out of caution index and COVID-19 seasonality unclear - I suspect fits generally look better with obvious seasonality since those are large fluctuations that are relatively easy to account for. 
 
-3)	Missing exogenous variables – only two variables are considered (plus temperature), so we are likely missing a lot of other information. For instance, gatherings over holidays may not be reflected in restaurant-related behavior and the arrival or new variants and their coverage in the media may impact caution and new cases. 
+3.	Missing exogenous variables – only two variables are considered (plus temperature), so we are likely missing a lot of other information. For instance, gatherings over holidays may not be reflected in restaurant-related behavior and the arrival or new variants and their coverage in the media may impact caution and new cases. 
 
