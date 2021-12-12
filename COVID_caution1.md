@@ -8,7 +8,30 @@ Google Trends provides easily accessible data on the relative changes in the pop
 
 ### Search Terms
 
-I tested search terms that might be related or inversely related such as “outdoor dining”, “best masks”, and “flight”. Ideal search terms would have sufficient overall search volume, show high levels of modulation to COVID-19, be rapidly responsive to changing conditions, and be available for as many states as possible. All these search terms were strongly affected by the COVID-19 crisis, reflecting a massive disruption to society (data for California shown):   
+I tested search terms that might be related or inversely related such as “outdoor dining”, “best masks”, and “flight”. Ideal search terms would have sufficient overall search volume, show high levels of modulation to COVID-19, be rapidly responsive to changing conditions, and be available for as many states as possible. 
+```r
+ind<-1
+for (words in search_terms) {
+  for (s in states){
+    print(paste(s,words))
+    gtrends(keyword = c(words), 
+            geo = c(s),
+            time = "2016-12-8 2021-12-8") -> result1
+    result <- result1$interest_over_time
+    nrows = length(result$hits)
+    temp1[ind:(ind+nrows-1)] <- paste0(as.Date(result$date))
+    temp2[ind:(ind+nrows-1)] <- (result$hits)
+    temp3[ind:(ind+nrows-1)] <- (replicate(nrows, words))
+    temp4[ind:(ind+nrows-1)] <- (replicate(nrows, s))
+    ind<-ind+nrows
+    plot(result$date,result$hits,type="l",col="red")
+  }
+}
+
+df <- data.frame(t(rbind(temp1,temp3,temp4,temp2)))
+colnames(df) <- c("date","search_term","state","hits")
+```
+All these search terms were strongly affected by the COVID-19 crisis, reflecting a massive disruption to society (data for California shown):   
 
 <img src="CA_5_years.png" alt="Google Trends for all search terms 2018-2021">
 
