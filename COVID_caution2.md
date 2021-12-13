@@ -32,6 +32,8 @@ Granger causality was significant for log new cases being predictive of log caut
 
 I explored an ARMAX model to try to predict caution, with new cases as an exogenous variable. The log transformed variables were used, so the “I” was not required. ARIMA (2,0,0) was selected by AIC, although (2,0,1) and (2,0,2) were close. This seems reasonable given the ACF and PACF plots. The model performs decently:
 
+<img src="ARIMA_caution_NY.png" alt="ARIMAX prediction of new cases (NY)">
+
 However, as mentioned above, new cases may be affected by caution, so, I also experimented with using a VAR(2) model, which again made decent but not amazing predictions. Python’s cointegration test (using Engle-Granger) was significant between detrended caution and new cases, indicating a non-spurious relationship between the two. Therefore, I next tried a Vector Error Correction Model (VECM), which again produced decent but not terrific forecasts.
 
 For NY:
